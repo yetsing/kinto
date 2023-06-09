@@ -4,6 +4,12 @@
 import re
 from xkeysnail.transform import *
 
+define_timeout(1)
+
+define_modmap({
+    Key.LEFT_CTRL: Key.LEFT_ALT,
+})
+
 # Use the following for testing terminal keymaps
 # terminals = [ "", ... ]
 # xbindkeys -mk
@@ -193,93 +199,93 @@ define_conditional_modmap(re.compile(termStr, re.IGNORECASE), {
 })
 
 # Keybindings for IntelliJ
-define_keymap(re.compile("^jetbrains-(?!.*toolbox).*$", re.IGNORECASE),{
-    # General
-    K("C-Key_0"): K("Alt-Key_0"),                 # Open corresponding tool window
-    K("C-Key_1"): K("Alt-Key_1"),                 # Open corresponding tool window
-    K("C-Key_2"): K("Alt-Key_2"),                 # Open corresponding tool window
-    K("C-Key_3"): K("Alt-Key_3"),                 # Open corresponding tool window
-    K("C-Key_4"): K("Alt-Key_4"),                 # Open corresponding tool window
-    K("C-Key_5"): K("Alt-Key_5"),                 # Open corresponding tool window
-    K("C-Key_6"): K("Alt-Key_6"),                 # Open corresponding tool window
-    K("C-Key_7"): K("Alt-Key_7"),                 # Open corresponding tool window
-    K("C-Key_8"): K("Alt-Key_8"),                 # Open corresponding tool window
-    K("C-Key_9"): K("Alt-Key_9"),                 # Open corresponding tool window
-    K("Super-Grave"): K("C-Grave"),             # Quick switch current scheme
-    K("C-Comma"): K("C-Alt-s"),                   # Open Settings dialog
-    K("C-Semicolon"): K("C-Alt-Shift-s"),         # Open Project Structure dialog
-    # Debugging
-    K("C-Alt-r"): K("F9"),                        # Resume program
-    # Search/Replace
-    K("C-g"): K("F3"),                          # Find next
-    K("C-Shift-F3"): K("Shift-F3"),             # Find previous
-    K("Super-g"): K("Alt-j"),                     # Select next occurrence
-    K("C-Super-g"): K("C-Alt-Shift-j"),           # Select all occurrences
-    K("Super-Shift-g"): K("Alt-Shift-j"),         # Unselect occurrence
-    # Editing
-    K("Super-Space"): K("LC-Space"),            # Basic code completion
-    K("Super-Shift-Space"): K("LC-Shift-Space"),# Smart code completion
-    K("Super-j"): K("C-q"),                     # Quick documentation lookup
-    K("C-n"): K("Alt-Insert"),                    # Generate code...
-    K("Super-o"): K("C-o"),                     # Override methods
-    K("Super-i"): K("C-i"),                     # Implement methods
-    K("Alt-Up"): K("C-w"),                        # Extend selection
-    K("Alt-Down"): K("C-Shift-w"),                # Shrink selection
-    K("Super-Shift-q"): K("Alt-q"),               # Context info
-    K("Super-Alt-o"): K("C-Alt-o"),                 # Optimize imports
-    K("Super-Alt-i"): K("C-Alt-i"),                 # Auto-indent line(s)
-    K("C-Backspace"): K("C-y"),                 # Delete line at caret
-    K("Super-Shift-j"): K("C-Shift-j"),         # Smart line join
-    K("Alt-Delete"): K("C-Delete"),               # Delete to word end
-    K("Alt-Backspace"): K("C-Backspace"),         # Delete to word start
-    K("C-Shift-Equal"): K("C-KPPLUS"),          # Expand code block
-    K("C-Minus"): K("C-KPMINUS"),               # Collapse code block
-    K("C-Shift-Equal"): K("C-Shift-KPPLUS"),    # Expand all
-    K("C-Shift-Minus"): K("C-Shift-KPMINUS"),   # Collapse all
-    K("C-w"): K("C-F4"),                        # Close active editor tab
-    # Refactoring
-    K("C-Delete"): K("Alt-Delete"),               # Safe Delete
-    K("C-T"): K("C-Alt-Shift-t"),                 # Refactor this
-    # Navigation
-    K("C-o"): K("C-n"),                         # Go to class
-    K("C-Shift-o"): K("C-Shift-n"),             # Go to file
-    K("C-Alt-o"): K("C-Alt-Shift-n"),               # Go to symbol
-    K("Super-Right"): K("Alt-Right"),             # Go to next editor tab
-    K("Super-Left"): K("Alt-Left"),               # Go to previous editor tab
-    K("C-l"): K("C-g"),                         # Go to line
-    K("Alt-Space"): K("C-Shift-i"),               # Open quick definition lookup
-    K("C-Y"): K("C-Shift-i"),                   # Open quick definition lookup
-    K("Super-Shift-b"): K("C-Shift-b"),         # Go to type declaration
-    K("Super-Up"): K("Alt-Up"),                   # Go to previous
-    K("Super-Down"): K("Alt-Down"),               # Go to next method
-    K("Super-h"): K("C-h"),                     # Type hierarchy
-    K("Super-Alt-h"): K("C-Alt-h"),                 # Call hierarchy
-    K("C-Down"): K("C-Enter"),                  # Edit source/View source
-    K("Alt-Home"): K("Alt-Home"),                   # Show navigation bar
-    K("F2"): K("F11"),                          # Toggle bookmark
-    K("Super-F3"): K("C-F11"),                  # Toggle bookmark with mnemonic
-    K("Super-Key_0"): K("C-Key_0"),             # Go to numbered bookmark
-    K("Super-Key_1"): K("C-Key_1"),             # Go to numbered bookmark
-    K("Super-Key_2"): K("C-Key_2"),             # Go to numbered bookmark
-    K("Super-Key_3"): K("C-Key_3"),             # Go to numbered bookmark
-    K("Super-Key_4"): K("C-Key_4"),             # Go to numbered bookmark
-    K("Super-Key_5"): K("C-Key_5"),             # Go to numbered bookmark
-    K("Super-Key_6"): K("C-Key_6"),             # Go to numbered bookmark
-    K("Super-Key_7"): K("C-Key_7"),             # Go to numbered bookmark
-    K("Super-Key_8"): K("C-Key_8"),             # Go to numbered bookmark
-    K("Super-Key_9"): K("C-Key_9"),             # Go to numbered bookmark
-    K("C-F3"): K("Shift-F11"),                  # Show bookmarks
-    # Compile and Run
-    K("Super-Alt-r"): K("Alt-Shift-F10"),           # Select configuration and run
-    K("Super-Alt-d"): K("Alt-Shift-F9"),            # Select configuration and debug
-    K("Super-r"): K("Shift-F10"),               # Run
-    K("Super-d"): K("Shift-F9"),                # Debug
-    K("Super-Shift-r"): K("C-Shift-F10"),       # Run context configuration from editor
-    K("Super-Shift-d"): K("C-Shift-F9"),        # Debug context configuration from editor
-    # VCS/Local History
-    K("Super-v"): K("Alt-Grave"),                 # VCS quick popup
-    K("Super-c"): K("LC-c"),                    # Sigints - interrupt
-},"Jetbrains")
+# define_keymap(re.compile("^jetbrains-(?!.*toolbox).*$", re.IGNORECASE),{
+#     # General
+#     K("C-Key_0"): K("Alt-Key_0"),                 # Open corresponding tool window
+#     K("C-Key_1"): K("Alt-Key_1"),                 # Open corresponding tool window
+#     K("C-Key_2"): K("Alt-Key_2"),                 # Open corresponding tool window
+#     K("C-Key_3"): K("Alt-Key_3"),                 # Open corresponding tool window
+#     K("C-Key_4"): K("Alt-Key_4"),                 # Open corresponding tool window
+#     K("C-Key_5"): K("Alt-Key_5"),                 # Open corresponding tool window
+#     K("C-Key_6"): K("Alt-Key_6"),                 # Open corresponding tool window
+#     K("C-Key_7"): K("Alt-Key_7"),                 # Open corresponding tool window
+#     K("C-Key_8"): K("Alt-Key_8"),                 # Open corresponding tool window
+#     K("C-Key_9"): K("Alt-Key_9"),                 # Open corresponding tool window
+#     K("Super-Grave"): K("C-Grave"),             # Quick switch current scheme
+#     K("C-Comma"): K("C-Alt-s"),                   # Open Settings dialog
+#     K("C-Semicolon"): K("C-Alt-Shift-s"),         # Open Project Structure dialog
+#     # Debugging
+#     K("C-Alt-r"): K("F9"),                        # Resume program
+#     # Search/Replace
+#     K("C-g"): K("F3"),                          # Find next
+#     K("C-Shift-F3"): K("Shift-F3"),             # Find previous
+#     K("Super-g"): K("Alt-j"),                     # Select next occurrence
+#     K("C-Super-g"): K("C-Alt-Shift-j"),           # Select all occurrences
+#     K("Super-Shift-g"): K("Alt-Shift-j"),         # Unselect occurrence
+#     # Editing
+#     K("Super-Space"): K("LC-Space"),            # Basic code completion
+#     K("Super-Shift-Space"): K("LC-Shift-Space"),# Smart code completion
+#     K("Super-j"): K("C-q"),                     # Quick documentation lookup
+#     K("C-n"): K("Alt-Insert"),                    # Generate code...
+#     K("Super-o"): K("C-o"),                     # Override methods
+#     K("Super-i"): K("C-i"),                     # Implement methods
+#     K("Alt-Up"): K("C-w"),                        # Extend selection
+#     K("Alt-Down"): K("C-Shift-w"),                # Shrink selection
+#     K("Super-Shift-q"): K("Alt-q"),               # Context info
+#     K("Super-Alt-o"): K("C-Alt-o"),                 # Optimize imports
+#     K("Super-Alt-i"): K("C-Alt-i"),                 # Auto-indent line(s)
+#     K("C-Backspace"): K("C-y"),                 # Delete line at caret
+#     K("Super-Shift-j"): K("C-Shift-j"),         # Smart line join
+#     K("Alt-Delete"): K("C-Delete"),               # Delete to word end
+#     K("Alt-Backspace"): K("C-Backspace"),         # Delete to word start
+#     K("C-Shift-Equal"): K("C-KPPLUS"),          # Expand code block
+#     K("C-Minus"): K("C-KPMINUS"),               # Collapse code block
+#     K("C-Shift-Equal"): K("C-Shift-KPPLUS"),    # Expand all
+#     K("C-Shift-Minus"): K("C-Shift-KPMINUS"),   # Collapse all
+#     K("C-w"): K("C-F4"),                        # Close active editor tab
+#     # Refactoring
+#     K("C-Delete"): K("Alt-Delete"),               # Safe Delete
+#     K("C-T"): K("C-Alt-Shift-t"),                 # Refactor this
+#     # Navigation
+#     K("C-o"): K("C-n"),                         # Go to class
+#     K("C-Shift-o"): K("C-Shift-n"),             # Go to file
+#     K("C-Alt-o"): K("C-Alt-Shift-n"),               # Go to symbol
+#     K("Super-Right"): K("Alt-Right"),             # Go to next editor tab
+#     K("Super-Left"): K("Alt-Left"),               # Go to previous editor tab
+#     K("C-l"): K("C-g"),                         # Go to line
+#     K("Alt-Space"): K("C-Shift-i"),               # Open quick definition lookup
+#     K("C-Y"): K("C-Shift-i"),                   # Open quick definition lookup
+#     K("Super-Shift-b"): K("C-Shift-b"),         # Go to type declaration
+#     K("Super-Up"): K("Alt-Up"),                   # Go to previous
+#     K("Super-Down"): K("Alt-Down"),               # Go to next method
+#     K("Super-h"): K("C-h"),                     # Type hierarchy
+#     K("Super-Alt-h"): K("C-Alt-h"),                 # Call hierarchy
+#     K("C-Down"): K("C-Enter"),                  # Edit source/View source
+#     K("Alt-Home"): K("Alt-Home"),                   # Show navigation bar
+#     K("F2"): K("F11"),                          # Toggle bookmark
+#     K("Super-F3"): K("C-F11"),                  # Toggle bookmark with mnemonic
+#     K("Super-Key_0"): K("C-Key_0"),             # Go to numbered bookmark
+#     K("Super-Key_1"): K("C-Key_1"),             # Go to numbered bookmark
+#     K("Super-Key_2"): K("C-Key_2"),             # Go to numbered bookmark
+#     K("Super-Key_3"): K("C-Key_3"),             # Go to numbered bookmark
+#     K("Super-Key_4"): K("C-Key_4"),             # Go to numbered bookmark
+#     K("Super-Key_5"): K("C-Key_5"),             # Go to numbered bookmark
+#     K("Super-Key_6"): K("C-Key_6"),             # Go to numbered bookmark
+#     K("Super-Key_7"): K("C-Key_7"),             # Go to numbered bookmark
+#     K("Super-Key_8"): K("C-Key_8"),             # Go to numbered bookmark
+#     K("Super-Key_9"): K("C-Key_9"),             # Go to numbered bookmark
+#     K("C-F3"): K("Shift-F11"),                  # Show bookmarks
+#     # Compile and Run
+#     K("Super-Alt-r"): K("Alt-Shift-F10"),           # Select configuration and run
+#     K("Super-Alt-d"): K("Alt-Shift-F9"),            # Select configuration and debug
+#     K("Super-r"): K("Shift-F10"),               # Run
+#     K("Super-d"): K("Shift-F9"),                # Debug
+#     K("Super-Shift-r"): K("C-Shift-F10"),       # Run context configuration from editor
+#     K("Super-Shift-d"): K("C-Shift-F9"),        # Debug context configuration from editor
+#     # VCS/Local History
+#     K("Super-v"): K("Alt-Grave"),                 # VCS quick popup
+#     K("Super-c"): K("LC-c"),                    # Sigints - interrupt
+# },"Jetbrains")
 
 ##############################################
 ### START OF FILE MANAGER GROUP OF KEYMAPS ###
