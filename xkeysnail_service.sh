@@ -542,7 +542,8 @@ fi
 
 if ! [[ $1 == "5" || $1 == "uninstall" || $1 == "Uninstall" ]]; then
 
-	mv ./linux/kinto.py.new ~/.config/kinto/kinto.py
+  #	mv ./linux/kinto.py.new ~/.config/kinto/kinto.py
+  mv ./linux/yq_kinto.py ~/.config/kinto/kinto.py
 	# if [ "$distro" == "fedora" ];then
 	if [ ! "$sysv" -eq 0 ];then
 		# echo "Using systemd..."
